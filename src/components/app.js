@@ -5,6 +5,10 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faSignOutAlt, faEdit } from "@fortawesome/free-solid-svg-icons"
+
 
 
 // import PortfolioContainer from './portfolio/portfolio-container';
@@ -17,6 +21,8 @@ import PortfolioManager from './pages/portfolio-manager';
 import PortfolioDetail from"./portfolio/portfolio-detail";
 import Auth from "./pages/auth"
 import noMatch from './pages/no-match';
+
+library.add(faTrash, faSignOutAlt, faEdit);
 
 
 
