@@ -130,9 +130,9 @@ export default class PortfolioForm extends Component {
 
     render() {
         return (
-            <div>Portfolio Form
+            
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="portfolio-form-wrapper">
                     <div>
                         <input
                             type="text"
@@ -163,6 +163,7 @@ export default class PortfolioForm extends Component {
                             name="category"
                             value={this.state.category}
                             onChange={this.handleChange}
+                            className="select-element"
                         >
                             <option value="eCommerce">eCommerce</option>
                             <option value="Scheduling">Scheduling</option>
@@ -214,7 +215,7 @@ export default class PortfolioForm extends Component {
                         <button type="submit">Save</button>
                     </div>
                 </form>
-            </div>
+            
         )
     }
 }
