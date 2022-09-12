@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from "react-router-dom"
 import BlogItem from '../blog/blog-item';
 import BlogModal from '../modals/blog-modal';
 
 
 class Blog extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             blogItems: [],
@@ -46,23 +45,23 @@ class Blog extends Component {
     }
 
     onScroll() {
-       
-            if (
-                this.state.isLoading ||
-                this.state.blogItems.length === this.state.totalCount
-            ) {
 
-            }
+        if (
+            this.state.isLoading ||
+            this.state.blogItems.length === this.state.totalCount
+        ) {
 
-            if (
-                window.innerHeight + document.documentElement.scrollTop ===
-                document.documentElement.offsetHeight
-            ) {
-                this.getBlogItems();
-            }
         }
 
-    
+        if (
+            window.innerHeight + document.documentElement.scrollTop ===
+            document.documentElement.offsetHeight
+        ) {
+            this.getBlogItems();
+        }
+    }
+
+
 
     getBlogItems() {
         this.setState({
@@ -99,14 +98,20 @@ class Blog extends Component {
 
         return (
             <div className='blog-container'>
-                <BlogModal 
-                handleSuccessfulNewBlogSubmission={this.handleSuccessfulNewBlogSubmission}
-                handleModalClose={this.handleModalClose}
-                modalIsOpen={this.state.blogModalIsOpen} />
+                <BlogModal
+                    handleSuccessfulNewBlogSubmission={this.handleSuccessfulNewBlogSubmission}
+                    handleModalClose={this.handleModalClose}
+                    modalIsOpen={this.state.blogModalIsOpen}
+                />
 
                 <div className='new-blog-link'>
-                    <a onClick={this.handleNewBlogClick}>Open Modal</a>
+                    {this.props.loggedInStatus === "Logged_In" ? (
+                        <a onClick={this.handleNewBlogClick}>
+                            <FontAwesomeIcon icon="plus-circle" />
+                        </a>
+                    ) : null}
                 </div>
+
                 <div className='content-container'>
                     {blogRecords}
                 </div>

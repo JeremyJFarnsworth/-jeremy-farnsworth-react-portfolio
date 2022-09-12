@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faSignOutAlt, faEdit, faSpinner } from "@fortawesome/free-solid-svg-icons"
+import { faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle } from "@fortawesome/free-solid-svg-icons"
 
 
 
@@ -23,7 +23,7 @@ import PortfolioDetail from"./portfolio/portfolio-detail";
 import Auth from "./pages/auth"
 import noMatch from './pages/no-match';
 
-library.add(faTrash, faSignOutAlt, faEdit, faSpinner);
+library.add(faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle);
 
 
 
@@ -121,7 +121,14 @@ export default class App extends Component {
 
             <Route exact path="/about-me" component={About} />
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/blog" key="portfolioManager" component={Blog} />
+
+            <Route exact path="/blog" 
+              render={props => (
+                <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
+              )}
+
+             />
+
             <Route path="/b/:slug" component={BlogDetail} />
             {this.state.loggedInStatus === "Logged_In" ? this.authorizedPages() : null}
             <Route exact path="/portfolio/:slug" component={PortfolioDetail} />
