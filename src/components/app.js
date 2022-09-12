@@ -5,9 +5,8 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle } from "@fortawesome/free-solid-svg-icons"
+import Icons from '../helpers/icons';
 
 
 
@@ -23,13 +22,14 @@ import PortfolioDetail from"./portfolio/portfolio-detail";
 import Auth from "./pages/auth"
 import noMatch from './pages/no-match';
 
-library.add(faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle);
 
 
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    Icons();
 
     this.state = {
       loggedInStatus: "Not_Logged_In"
